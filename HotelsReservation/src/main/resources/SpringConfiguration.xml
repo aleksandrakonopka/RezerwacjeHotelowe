@@ -1,0 +1,186 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <!-- TYPY PŁATNOŚCI !-->
+    <bean id="platnosc_gotowka" class="Typy_platnosci" factory-method="valueOf">
+        <constructor-arg value="GOTOWKA"/>
+    </bean>
+    <bean id="platnosc_karta" class="Typy_platnosci" factory-method="valueOf">
+        <constructor-arg value="KARTA"/>
+    </bean>
+
+    <!-- KLIENCI !-->
+    <bean id="klient1" class="Klienci">
+        <constructor-arg value="1"/>
+        <constructor-arg value="Marcin"/>
+        <constructor-arg value="Banaśkiewicz"/>
+        <constructor-arg value="Prawilna Praga 6"/>
+        <constructor-arg value="666777554"/>
+        <constructor-arg value="haselko"/>
+    </bean>
+
+    <!-- REZERWACJA !-->
+    <bean id="rez1" class="Rezerwacje">
+        <constructor-arg value="1521125646135"/>
+        <constructor-arg value="1523128646135"/>
+        <constructor-arg ref="klient1"/>
+        <constructor-arg>
+            <ref bean="JanK"/>
+        </constructor-arg>
+        <constructor-arg value="1"/>
+        <constructor-arg ref="platnosc_gotowka"/>
+        <property name="pokoje">
+            <list>
+                <ref bean="Pokoj1"/>
+            </list>
+        </property>
+        <property name="platnosci" ref="platnosc_karta"/>
+    </bean>
+
+
+    <!-- PRACOWNICY !-->
+    <bean id="JanK" class="Pracownicy">
+        <constructor-arg value="Jan"/>
+        <constructor-arg value="Kowalski/"/>
+        <constructor-arg value="1"/>
+        <constructor-arg value="Haslo1"/>
+    </bean>
+    <bean id="AdaG" class="Pracownicy">
+        <constructor-arg value="Ada"/>
+        <constructor-arg value="Górska/"/>
+        <constructor-arg value="2"/>
+        <constructor-arg value="Haslo2"/>
+    </bean>
+    <bean id="WojtekZ" class="Pracownicy">
+        <constructor-arg value="Wojtek"/>
+        <constructor-arg value="Zółciński"/>
+        <constructor-arg value="3"/>
+        <constructor-arg value="Haslo3"/>
+    </bean>
+
+    <!-- UDOGODNIENIA !-->
+    <bean id="sauna" class="Udogodnienia" factory-method="valueOf">
+        <constructor-arg value="SAUNA"/>
+    </bean>
+    <bean id="basen" class="Udogodnienia" factory-method="valueOf">
+        <constructor-arg value="BASEN"/>
+    </bean>
+    <bean id="spa" class="Udogodnienia" factory-method="valueOf">
+        <constructor-arg value="SPA"/>
+    </bean>
+    <bean id="tv" class="Udogodnienia" factory-method="valueOf">
+        <constructor-arg value="TV"/>
+    </bean>
+    <bean id="prywatneWC" class="Udogodnienia" factory-method="valueOf">
+        <constructor-arg value="PRYWATNE_WC"/>
+    </bean>
+    <bean id="wspolneWC" class="Udogodnienia" factory-method="valueOf">
+        <constructor-arg value="WSPOLNE_WC"/>
+    </bean>
+
+    <!-- POKOJE !-->
+    <bean id="Pokoj1" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_1"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="spa"/>
+                <ref bean="tv"/>
+                <ref bean="prywatneWC"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj2" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_2"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="spa"/>
+                <ref bean="tv"/>
+                <ref bean="prywatneWC"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj3" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_3"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="spa"/>
+                <ref bean="tv"/>
+                <ref bean="prywatneWC"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj4" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_4"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="spa"/>
+                <ref bean="tv"/>
+                <ref bean="prywatneWC"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj5" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_5"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="tv"/>
+                <ref bean="wspolneWC"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj6" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_6"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="tv"/>
+                <ref bean="wspolneWC"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj7" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_7"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="prywatneWC"/>
+                <ref bean="tv"/>
+                <ref bean="spa"/>
+                <ref bean="basen"/>
+                <ref bean="sauna"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj8" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_8"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="prywatneWC"/>
+                <ref bean="tv"/>
+                <ref bean="spa"/>
+                <ref bean="basen"/>
+                <ref bean="sauna"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj9" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_9"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="wspolneWC"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="Pokoj10" class="Pokoje" factory-method="valueOf">
+        <constructor-arg value="POKOJ_10"/>
+        <property name="udogodnienia" >
+            <list>
+                <ref bean="wspolneWC"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
